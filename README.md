@@ -14,9 +14,9 @@ Algorithm Steps:
 2) Apply zoom to view.
 3) Set view x and y coordinates such that the proportional positioning is maintained for the object.
 
-![Example](https://github.com/BflySamurai/Zooming-with-Target-Focus/blob/master/Graphics/Zooming_with_Target_Focus_0?raw=true "Example")
+![Example](https://github.com/BflySamurai/Zooming-with-Target-Focus/blob/master/Graphics/Zooming_with_Target_Focus_0.png?raw=true "Example")
 
-![Example](https://github.com/BflySamurai/Zooming-with-Target-Focus/blob/master/Graphics/Zooming_with_Target_Focus_1?raw=true "Example")
+![Example](https://github.com/BflySamurai/Zooming-with-Target-Focus/blob/master/Graphics/Zooming_with_Target_Focus_1.png?raw=true "Example")
 
 *Both the X ande Y values are calculated the exact same way, so to save space and for clarity, only the X values are calculated/shown here.*
 
