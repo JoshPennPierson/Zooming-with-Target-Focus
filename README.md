@@ -1,7 +1,5 @@
 # Zooming-with-Target-Focus
-Zoom the view while keeping focus on mouse or object position.
-
-This algorithm maintains the proportions between a given object and the edges of the view while zooming.
+This is an algorithm that maintains the proportions between a given object and the edges of the view while zooming.
 
 Try out the algoritm here (mouse as the focal object and mouse scroll to zoom): [http://pennpierson.com/gm_zoom/](http://pennpierson.com/gm_zoom/)
 
