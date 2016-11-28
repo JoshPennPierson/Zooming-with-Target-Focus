@@ -3,7 +3,7 @@ Zoom the view while keeping focus on mouse or object position.
 
 This algorithm maintains the proportions between a given object and the edges of the view while zooming.
 
-Try out the algoritm here: [http://pennpierson.com/gm_zoom](pennpierson.com/gm_zoom/)
+Try out the algoritm here: [http://pennpierson.com/gm_zoom/](http://pennpierson.com/gm_zoom/)
 Or download the GameMaker source files.
 
 ----
