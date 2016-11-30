@@ -28,8 +28,8 @@
             <string>/// Initialize variables
 
 zoom = 1; // Initial zoom level
-default_width = 400; // Initial view width
-default_height = 300; // Initial view width
+default_width = view_wview; // Initial view width
+default_height = view_hview; // Initial view width
 zoom_increment = 0.1; // How much to zoom by
 target = obj_cursor; // Target to keep focus on when zooming
 </string>
