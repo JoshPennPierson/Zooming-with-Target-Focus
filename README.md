@@ -34,7 +34,7 @@ Applied Zoom | **X<sub>O<sub>zoom</sub></sub>** = X - X<sub>A<sub>zoom</sub></su
 
 #GameMaker Studio Code
 
-This is the code for the camera object. The target is set to <obj_cursor> (which copies the mouse position), but you can set the target to whatever you want, or you can swap out some of the code to have it directly follow the mouse.
+This is the code for the camera object. The target is set to obj_cursor (which copies the mouse position), but you can set the target to whatever you want, or you can swap out some of the code to have it directly follow the mouse.
 
 ## Create Event
 
