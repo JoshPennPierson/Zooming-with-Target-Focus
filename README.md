@@ -82,7 +82,7 @@ else if zoom > 10 { // Make sure it doesn't get too large
 // view_hview[0] ~~ height of view
 
 if mouse_scrolling { // If scrolling/zoooming
-    // Get the distance from the target to the orgigin.
+    // Get the distance from the target to the origin.
     target_x_abs = target.x - view_xview[0];
     target_y_abs = target.y - view_yview[0];
     // Find the proportional from the object to the origin.
