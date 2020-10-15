@@ -1,7 +1,7 @@
 # Zooming-with-Target-Focus
 This is an algorithm that maintains the proportions between a given object and the edges of the view while zooming.
 
-Try out the algoritm here (mouse as the focal object and mouse scroll to zoom): [http://pennpierson.com/gm_zoom/](http://pennpierson.com/gm_zoom/)
+Try out the algoritm here (mouse as the focal object and mouse scroll to zoom): [http://pennpierson.com/gm_zoom/index.html](http://pennpierson.com/gm_zoom/index.html)
 
 Or download and play with the GameMaker source files.
 
