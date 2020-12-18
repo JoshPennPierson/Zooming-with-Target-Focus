@@ -32,7 +32,7 @@ Algorithm Steps:
 Default Zoom | **X<sub>O</sub>** | **X<sub>D</sub>** | **X** | **X<sub>A</sub>** = X / X<sub>O</sub> | **X<sub>P</sub>** = X<sub>A</sub> / X<sub>D</sub>
 Applied Zoom | **X<sub>O<sub>zoom</sub></sub>** = X - X<sub>A<sub>zoom</sub></sub> | **X<sub>V</sub>** = X<sub>D</sub> * Zoom | Constant | **X<sub>A<sub>zoom</sub></sub>** = X<sub>V</sub> * X<sub>P</sub> | Constant
 
-#GameMaker Studio Code
+# GameMaker Studio Code
 
 Below is the GML code for a camera object. The target is set to obj_cursor, which is a GameMaker object that updates every step to be at the mouse position). You can set the target to whatever you want, or you can swap out some of the code to have it directly follow the mouse.
 
