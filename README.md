@@ -1,9 +1,9 @@
 # Zooming-with-Target-Focus
 This is an algorithm that maintains the proportions between a given object and the edges of the view while zooming.
 
-Try out the algoritm here (mouse as the focal object and mouse scroll to zoom): [http://pennpierson.com/gm_zoom/index.html](http://pennpierson.com/gm_zoom/index.html)
+Try out the algorithm here (using the mouse as the focal object and mouse scroll to zoom): [http://pennpierson.com/gm_zoom/index.html](http://pennpierson.com/gm_zoom/index.html)
 
-Or download and play with the GameMaker source files.
+Or download and play around with the with the GameMaker source files.
 
 ----
 
@@ -11,7 +11,7 @@ Algorithm Steps:
 
 1) Find the proportional position of the object.
 2) Apply zoom to view.
-3) Set view x and y coordinates such that the proportional positioning is maintained for the object.
+3) Set the view x and y origin coordinates such that the proportional positioning is maintained for the object.
 
 ![Example](https://github.com/BflySamurai/Zooming-with-Target-Focus/blob/master/Graphics/Zooming_with_Target_Focus_0.png?raw=true "Example")
 
@@ -34,18 +34,19 @@ Applied Zoom | **X<sub>O<sub>zoom</sub></sub>** = X - X<sub>A<sub>zoom</sub></su
 
 #GameMaker Studio Code
 
-This is the code for the camera object. The target is set to obj_cursor (which copies the mouse position), but you can set the target to whatever you want, or you can swap out some of the code to have it directly follow the mouse.
+Below is the GML code for a camera object. The target is set to obj_cursor, which is a GameMaker object that updates every step to be at the mouse position). You can set the target to whatever you want, or you can swap out some of the code to have it directly follow the mouse.
 
 ## Create Event
 
 ```
 /// Initialize variables
 
-zoom = 1; // Initial zoom level
-default_width = 400; // Initial view width
+zoom = 1;             // Initial zoom level
+default_width = 400;  // Initial view width
 default_height = 300; // Initial view width
 zoom_increment = 0.1; // How much to zoom by
-target = obj_cursor; // Target to keep focus on when zooming
+zoom_max = 10;        // Maximum zoom amount
+target = obj_cursor;  // Target to keep focus on when zooming
 ```
 
 ## Step Event
@@ -55,21 +56,20 @@ target = obj_cursor; // Target to keep focus on when zooming
 
 mouse_scroll_up = mouse_wheel_up();
 mouse_scroll_down = mouse_wheel_down();
-mouse_scrolling = false;
-if mouse_scroll_up or mouse_scroll_down {
-    mouse_scrolling = true;
-}
 ```
 
 ```
 /// Zooming
 
-// Apply scrolling to desired_zoom
-var desired_zoom += (mouse_scroll_up - mouse_scroll_down) * zoom_increment;
+var zoom_has_changed = false;
 
-// Only apply desired_zoom to zoom if it is above zero and below 10
-if new_zoom > 0 and new_zoom < 10 {
+// Calculated desired zoom level
+var desired_zoom = zoom + ((mouse_scroll_up - mouse_scroll_down) * zoom_increment);
+
+// Apply desired_zoom to zoom if it is above zero and below 10
+if new_zoom > 0 and new_zoom < zoom_max {
     zoom = desired_zoom;
+    zoom_has_changed = true;
 }
 
 // INFO
@@ -78,23 +78,26 @@ if new_zoom > 0 and new_zoom < 10 {
 // view_wview[0] ~~ width of view
 // view_hview[0] ~~ height of view
 
-if mouse_scrolling { // If scrolling/zoooming
-    // Get the distance from the target to the origin.
-    target_x_abs = target.x - view_xview[0];
-    target_y_abs = target.y - view_yview[0];
-    // Find the proportional from the object to the origin.
-    target_x_p = target_x_abs / view_wview[0];
-    target_y_p = target_y_abs / view_hview[0];
+// 
+if zoom_has_changed {
+    // Get the relative position of the target on the screen.
+    target_x_dist = target.x - view_xview[0];
+    target_y_dist = target.y - view_yview[0];
 
-    // Set zoom
+    // Calculate how far the object is across the screen (as a percent) for both x and y values.
+    target_x_p = target_x_dist / view_wview[0];
+    target_y_p = target_y_dist / view_hview[0];
+
+    // Set width and height of the view to match the zoom level
     view_wview[0] = default_width * zoom;
     view_hview[0] = default_height * zoom;
-    
-    // Calculate what the new distance from the target to the origin should be.
-    target_x_new_abs = view_wview[0] * target_x_p;
-    target_y_new_abs = view_hview[0] * target_y_p;
-    // Set the origin based on where the object should be.
-    view_xview[0] = target.x - target_x_new_abs;
-    view_yview[0] = target.y - target_y_new_abs;
+
+    // Use the previous percent values to calculate where the target should be on the screen.
+    target_x_new_dist = view_wview[0] * target_x_p;
+    target_y_new_dist = view_hview[0] * target_y_p;
+
+    // Set the origin of the view such that the target is in the correct place on the screen.
+    view_xview[0] = target.x - target_x_new_dist;
+    view_yview[0] = target.y - target_y_new_dist;
 }
 ```
