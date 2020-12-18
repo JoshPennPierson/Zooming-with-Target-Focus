@@ -17,7 +17,7 @@ Algorithm Steps:
 
 ![Example](https://github.com/BflySamurai/Zooming-with-Target-Focus/blob/master/Graphics/Zooming_with_Target_Focus_1.png?raw=true "Example")
 
-*Both the X ande Y values are calculated the exact same way, so to save space and for clarity, only the X values are calculated/shown here.*
+*Both the X and Y values are calculated the exact same way, so to save space and for clarity, only the X values are calculated/shown here.*
 
 * X<sub>O</sub> ~~ View x origin
 * X<sub>V</sub> ~~ View width
@@ -58,7 +58,7 @@ mouse_scroll_down = mouse_wheel_down();
 mouse_scrolling = false;
 if mouse_scroll_up or mouse_scroll_down {
     mouse_scrolling = true;
-    }
+}
 ```
 
 ```
@@ -70,10 +70,9 @@ zoom += (mouse_scroll_up - mouse_scroll_down) * zoom_increment;
 // Make sure zoom doesn't reach or fall below 0
 if zoom < zoom_increment {
     zoom = zoom_increment;
-    }
-else if zoom > 10 { // Make sure it doesn't get too large
+} else if zoom > 10 { // Make sure it doesn't get too large
     zoom = 10;
-    }
+}
 
 // INFO
 // view_xview[0] ~~ x origin of view
@@ -99,5 +98,5 @@ if mouse_scrolling { // If scrolling/zoooming
     // Set the origin based on where the object should be.
     view_xview[0] = target.x - target_x_new_abs;
     view_yview[0] = target.y - target_y_new_abs;
-    }
+}
 ```
