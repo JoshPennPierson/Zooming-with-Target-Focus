@@ -64,14 +64,12 @@ if mouse_scroll_up or mouse_scroll_down {
 ```
 /// Zooming
 
-// If scrolling, apply it to the zoom variable
-zoom += (mouse_scroll_up - mouse_scroll_down) * zoom_increment;
+// Apply scrolling to desired_zoom
+var desired_zoom += (mouse_scroll_up - mouse_scroll_down) * zoom_increment;
 
-// Make sure zoom doesn't reach or fall below 0
-if zoom < zoom_increment {
-    zoom = zoom_increment;
-} else if zoom > 10 { // Make sure it doesn't get too large
-    zoom = 10;
+// Only apply desired_zoom to zoom if it is above zero and below 10
+if new_zoom > 0 and new_zoom < 10 {
+    zoom = desired_zoom;
 }
 
 // INFO
