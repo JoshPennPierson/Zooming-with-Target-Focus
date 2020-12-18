@@ -36,6 +36,14 @@ Applied Zoom | **X<sub>O<sub>zoom</sub></sub>** = X - X<sub>A<sub>zoom</sub></su
 
 Below is the GML code for a camera object. The target is set to obj_cursor, which is a GameMaker object that updates every step to be at the mouse position). You can set the target to whatever you want, or you can swap out some of the code to have it directly follow the mouse.
 
+```
+// INFO
+// view_xview[0] ~~ x origin of view
+// view_yview[0] ~~ y origin of view
+// view_wview[0] ~~ width of view
+// view_hview[0] ~~ height of view
+```
+
 ## Create Event
 
 ```
@@ -72,13 +80,7 @@ if new_zoom > 0 and new_zoom < zoom_max {
     zoom_has_changed = true;
 }
 
-// INFO
-// view_xview[0] ~~ x origin of view
-// view_yview[0] ~~ y origin of view
-// view_wview[0] ~~ width of view
-// view_hview[0] ~~ height of view
-
-// 
+// Apply zoom to the view
 if zoom_has_changed {
     // Get the relative position of the target on the screen.
     target_x_dist = target.x - view_xview[0];
