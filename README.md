@@ -74,7 +74,7 @@ var zoom_has_changed = false;
 // Calculated desired zoom level
 var desired_zoom = zoom + ((mouse_scroll_up - mouse_scroll_down) * zoom_increment);
 
-// Apply desired_zoom to zoom if it is above zero and below 10
+// Apply desired_zoom to zoom if it is above zero and below the max
 if new_zoom > 0 and new_zoom < zoom_max {
     zoom = desired_zoom;
     zoom_has_changed = true;
